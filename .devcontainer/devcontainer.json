@@ -8,6 +8,7 @@
     "app"
   ],
   "workspaceFolder": "/workspace/rails-api",
+  // "postCreateCommand": "ruby --version && bundle install",
   "postCreateCommand": "ruby --version && bundle config set --local path vendor/bundle && bundle install",
   "customizations": {
     "vscode": {
@@ -25,5 +26,8 @@
     }
   },
   "remoteUser": "vscode",
-  "shutdownAction": "stopCompose"
+  "shutdownAction": "stopCompose",
+  "forwardPorts": [
+    "3000:3000"
+  ],
 }

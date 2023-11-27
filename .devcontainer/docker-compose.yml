@@ -18,6 +18,8 @@ services:
       - type: bind
         source: $PWD
         target: /workspace/rails-api
+    ports:
+      - 3000:3000
 
 networks:
   shared-network:
