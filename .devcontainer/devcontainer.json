@@ -1,33 +1,35 @@
 {
-  "name": "rails-api",
+  "name": "slack-freee-hrm-sync",
   "dockerComposeFile": [
     "./docker-compose.yml"
   ],
   "service": "app",
   "runServices": [
-    "app"
+    "app", "db"
   ],
-  "workspaceFolder": "/workspace/rails-api",
-  // "postCreateCommand": "ruby --version && bundle install",
-  "postCreateCommand": "ruby --version && bundle config set --local path vendor/bundle && bundle install",
+  "updateRemoteUserUID": false,
+  "workspaceFolder": "/workspace/slack-freee-hrm-sync",
+  "postCreateCommand": "ruby --version && bundle install",
   "customizations": {
     "vscode": {
-      "extensions": [
-        "Shopify.ruby-lsp",
-        "Shopify.ruby-extensions-pack",
-        "sorbet.sorbet-vscode-extension",
-        "KoichiSasada.vscode-rdbg",
-        "castwide.solargraph",
-        "ionutvmi.path-autocomplete"
-      ],
       "settings": {
-        "terminal.integrated.defaultProfile.linu": "/bin/zsh"
-      }
+        "terminal.integrated.defaultProfile.linux": "ash",
+        "extensions.verifySignature": false
+      },
+      "extensions": [
+          "ms-azuretools.vscode-docker",
+          "esbenp.prettier-vscode",
+          "bung87.rails",
+          "Shopify.ruby-lsp",
+          "KoichiSasada.vscode-rdbg",
+          "streetsidesoftware.code-spell-checker",
+          "wmaurer.change-case",
+          "shardulm94.trailing-spaces",
+          "Postman.postman-for-vscode"
+      ]
     }
   },
-  "remoteUser": "vscode",
-  "shutdownAction": "stopCompose",
-  "forwardPorts": [
-    "3000:3000"
-  ],
+  "remoteUser": "ruby",
+  "forwardPorts": [3000],
+  "shutdownAction": "stopCompose"
 }

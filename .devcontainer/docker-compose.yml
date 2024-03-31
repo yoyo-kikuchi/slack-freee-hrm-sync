@@ -1,26 +1,55 @@
-version: "3.4"
+version: '3.9'
 
 services:
   app:
     build:
-      context: ./
+      context: app/
       dockerfile: Dockerfile
       args:
         UID: ${UID:-1000}
         GID: ${GID:-1000}
-    image: dev-rails-api
-    container_name: rails-api
+    platform: linux/amd64
+    image: ruby-3.3.0
+    container_name: slack-freee-hrm-sync-app
+    working_dir: /workspace/slack-freee-hrm-sync
+    # command: sh -c 'rm -f tmp/pids/server.pid && rails s -b 0.0.0.0 -p 3000'
     tty: true
+    stdin_open: true
+    user: ruby
     env_file:
       - .env
-    working_dir: /workspace/
+    ports:
+      - '3000:3000'
     volumes:
       - type: bind
         source: $PWD
-        target: /workspace/rails-api
+        target: /workspace/slack-freee-hrm-sync
+      - type: volume
+        source: slack-freee-hrm-sync-bundle-volume
+        target: /usr/local/bundle
+    depends_on:
+      - db
+
+  db:
+    image: postgres:16.2
+    container_name: slack-freee-hrm-sync-vault-db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
     ports:
-      - 3000:3000
+      - '5532:5432'
+    volumes:
+      - type: volume
+        source: slack-freee-hrm-sync-db-volume
+        target: /var/lib/postgresql/data
 
 networks:
-  shared-network:
-    external: true
+  default:
+    name: slack-freee-hrm-sync-devcontainer_dafault
+    external: false
+
+volumes:
+  slack-freee-hrm-sync-db-volume:
+    driver: local
+  slack-freee-hrm-sync-bundle-volume:
+    driver: local
