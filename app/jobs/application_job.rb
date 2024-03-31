@@ -1,4 +1,9 @@
+#frozen_string_literal: true"
+
 class ApplicationJob < ActiveJob::Base
+  def hog
+    p 'xxxxx'
+  end
   # Automatically retry jobs that encountered a deadlock
   # retry_on ActiveRecord::Deadlocked
 

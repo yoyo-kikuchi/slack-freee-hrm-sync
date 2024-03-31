@@ -1,0 +1,7 @@
+{
+  "Frozen String Literal": {
+    "prefix": "frozen",
+    "body": ["# frozen_string_literal: true", "", "$0"],
+    "description": "Insert frozen string literal comment at the top of the file"
+  }
+}

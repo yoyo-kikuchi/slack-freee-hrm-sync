@@ -1,24 +1,43 @@
-# README
+# Slack Freee Hrm sync
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+- Ruby version
+- 3.3.0
 
-Things you may want to cover:
+- System dependencies
 
-* Ruby version
+- Configuration
 
-* System dependencies
+- Database creation
 
-* Configuration
+```bash
+rails db:create
+```
 
-* Database creation
+- Database migration
 
-* Database initialization
+```bash
+# Create model file & migration file
+rails g model <class_name> [(option)name:string]
+# exec migration
+rails db:migrate
+```
 
-* How to run the test suite
+- Insert test-data
 
-* Services (job queues, cache servers, search engines, etc.)
+```bash
+rails db:seed_fu
+```
 
-* Deployment instructions
+- Database initialization
 
-* ...
+- How to run the test suite
+
+```bash
+bundle exec rspec
+```
+
+- Services (job queues, cache servers, search engines, etc.)
+
+- Deployment instructions
+
+- ...

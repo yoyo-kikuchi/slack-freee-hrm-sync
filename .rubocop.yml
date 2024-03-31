@@ -1,6 +1,5 @@
 inherit_from: .rubocop_todo.yml
 
-
 AllCops:
   SuggestExtensions: false
   # 最新のルールを適用する
@@ -43,4 +42,7 @@ Style/StringLiterals:
 
 # 変数名に数字を許可
 Naming/VariableNumber:
+  Enabled: false
+
+Layout/LeadingCommentSpace:
   Enabled: false
