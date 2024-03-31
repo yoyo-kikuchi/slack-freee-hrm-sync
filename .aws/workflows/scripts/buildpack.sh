@@ -2,7 +2,6 @@
 #------------------------------
 # validate
 #------------------------------
-
 # params
 readonly branch=${1:?}
 readonly image_tag=${2:?}
@@ -22,8 +21,14 @@ if [[ "${image_prefix}x" == "x" ]]; then echo "${branch} branch is not supported
 # dep
 if [[ "$(which docker)x" == "x" ]]; then echo "docker is not installed." >&2; exit 1; fi
 
+# Change current script dir
+echo cd `dirname $0`
+
 function buildpack() {
   local _image_name="${1:?}"
+
+  # Change root dir
+  cd ../../
 
   echo -e "\nbuildpack ${_image_name}" >&2
   echo -e "\n-- docker build" >&2

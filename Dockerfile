@@ -40,7 +40,7 @@ WORKDIR /app
 RUN chown $USERNAME:$USERNAME /app
 COPY --from=Builder --chown=$USERNAME:$USERNAME /app /app
 COPY --from=Builder --chown=$USERNAME:$USERNAME /usr/local/bundle/ /usr/local/bundle/
-COPY --chown=$USERNAME:$USERNAME ./bin/docker-entrypoint /app/
+COPY --chown=$USERNAME:$USERNAME ./bin/docker-entrypoint.sh /app/
 
 USER $USERNAME
 
